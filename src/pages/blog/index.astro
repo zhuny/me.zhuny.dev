@@ -5,7 +5,7 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { LEGACY_BLOG_URL, SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -13,12 +13,37 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={`블로그 | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 		<style>
 			main {
 				width: 960px;
+			}
+			.migration-notice {
+				display: flex;
+				align-items: flex-start;
+				gap: 1em;
+				margin: 0 0 2.5em;
+				padding: 1.25em 1.5em;
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 12px;
+				background: rgba(var(--gray-light), 0.35);
+				color: rgb(var(--gray-dark));
+				line-height: 1.6;
+			}
+			.migration-notice__icon {
+				flex-shrink: 0;
+				width: 1.75em;
+				height: 1.75em;
+				margin-top: 0.1em;
+				color: var(--accent);
+			}
+			.migration-notice p {
+				margin: 0;
+			}
+			.migration-notice a {
+				font-weight: 600;
 			}
 			ul {
 				display: flex;
@@ -89,6 +114,28 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
+			<aside class="migration-notice" role="note">
+				<svg
+					class="migration-notice__icon"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.75"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<path d="M10 17h4M3 17h2M3 12V7a1 1 0 0 1 1-1h11v11H4a1 1 0 0 1-1-1v-4" />
+					<path d="M15 6h4l2 3v9h-6V6z" />
+					<circle cx="7.5" cy="17.5" r="1.5" />
+					<circle cx="17.5" cy="17.5" r="1.5" />
+				</svg>
+				<p>
+					이전 블로그 글을 이 사이트로 옮기는 중입니다. 기존 글은
+					<a href={LEGACY_BLOG_URL} target="_blank" rel="noopener noreferrer">{LEGACY_BLOG_URL}</a>
+					에서 확인할 수 있습니다.
+				</p>
+			</aside>
 			<section>
 				<ul>
 					{
