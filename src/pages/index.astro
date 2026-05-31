@@ -1,0 +1,66 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import CardLink from '../components/CardLink.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.hero {
+				padding: 2em 0 3em;
+			}
+			.hero h1,
+			.subtitle {
+				text-align: center;
+			}
+			.hero h1 {
+				margin-bottom: 0.25em;
+				font-size: 3.5em;
+				letter-spacing: -0.02em;
+			}
+			.subtitle {
+				margin: 0 0 1.25em;
+				font-size: 1.35em;
+				font-weight: 600;
+				color: rgb(var(--black));
+				line-height: 1.4;
+			}
+			.tagline {
+				margin: 0;
+				max-width: 36em;
+				color: rgb(var(--gray));
+				font-size: 1.1em;
+				line-height: 1.6;
+			}
+			.card-links {
+				display: grid;
+				gap: 1em;
+				margin-top: 2.5em;
+			}
+			@media (min-width: 520px) {
+				.card-links {
+					grid-template-columns: 1fr 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="hero">
+				<h1>{SITE_TITLE}</h1>
+				<p class="subtitle">{SITE_DESCRIPTION}</p>
+			</section>
+			<section class="card-links" aria-label="바로가기">
+				<CardLink href="/blog" title="블로그" description="관찰과 사고의 흔적들" />
+				<CardLink href="/resume" title="이력서" description="경력 및 역량" />
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

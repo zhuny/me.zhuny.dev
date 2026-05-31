@@ -1,0 +1,21 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<BaseHead title={`이력서 | ${SITE_TITLE}`} description="경력과 프로젝트" />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>이력서</h1>
+			<p>이력서 내용을 준비 중입니다.</p>
+		</main>
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,26 @@
+---
+import { SITE_TITLE } from '../consts';
+import SocialLinks from './SocialLinks.astro';
+
+const today = new Date();
+---
+
+<footer>
+	<div>
+		&copy; {today.getFullYear()} {SITE_TITLE}. All rights reserved.
+	</div>
+	<SocialLinks />
+</footer>
+<style>
+	footer {
+		padding: 2em 1em 6em 1em;
+		background: linear-gradient(var(--gray-gradient)) no-repeat;
+		color: rgb(var(--gray));
+		text-align: center;
+	}
+
+	footer :global(.social-links) {
+		justify-content: center;
+		margin-top: 2em;
+	}
+</style>
