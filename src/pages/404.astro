@@ -1,0 +1,66 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import CardLink from '../components/CardLink.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<BaseHead title={`길을 잃었어요 | ${SITE_TITLE}`} description="요청하신 페이지를 찾을 수 없습니다." />
+		<style>
+			.not-found {
+				padding: 2em 0 3em;
+				text-align: center;
+			}
+			.not-found__code {
+				margin: 0 0 0.15em;
+				font-size: 5em;
+				font-weight: 700;
+				letter-spacing: -0.04em;
+				line-height: 1;
+				color: var(--accent);
+				opacity: 0.85;
+			}
+			.not-found__message {
+				margin: 0 0 2em;
+				max-width: 28em;
+				margin-left: auto;
+				margin-right: auto;
+				font-size: 1.2em;
+				line-height: 1.6;
+				color: rgb(var(--gray-dark));
+			}
+			.card-links {
+				display: grid;
+				gap: 1em;
+				margin-top: 0.5em;
+			}
+			@media (min-width: 520px) {
+				.card-links {
+					grid-template-columns: 1fr 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="not-found" aria-labelledby="not-found-heading">
+				<p class="not-found__code" aria-hidden="true">404</p>
+				<h1 id="not-found-heading" class="sr-only">페이지를 찾을 수 없음</h1>
+				<p class="not-found__message">
+					멍 때리고 있었더니 길을 잃은 거 같아.<br />
+					지도를 봐야겠어.
+				</p>
+			</section>
+			<section class="card-links" aria-label="길 찾기">
+				<CardLink href="/" title="홈" description="처음으로 돌아가기" />
+				<CardLink href="/blog" title="블로그" description="관찰과 사고의 흔적들" />
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
