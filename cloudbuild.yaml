@@ -16,5 +16,8 @@ steps:
       - '--project=$_AR_PROJECT_ID'
       - '--only=hosting'
     dir: .
+options:
+  substitutionOption: ALLOW_LOOSE
+  logging: CLOUD_LOGGING_ONLY
 substitutions:
   _AR_PROJECT_ID: zhunium-990719
