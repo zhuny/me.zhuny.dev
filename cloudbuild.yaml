@@ -1,0 +1,20 @@
+steps:
+  # Install dependencies
+  - name: node
+    entrypoint: npm
+    args: ["install"]
+    dir: .
+  # Run custom commands
+  - name: node
+    entrypoint: npm
+    args: ["run", "build"]
+    dir: .
+  # Deploy to firebase hosting
+  - name: us-docker.pkg.dev/firebase-cli/us/firebase
+    args:
+      - deploy
+      - '--project=$_AR_PROJECT_ID'
+      - '--only=hosting'
+    dir: .
+substitutions:
+  _AR_PROJECT_ID: zhunium-990719
