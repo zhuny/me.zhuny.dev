@@ -9,12 +9,110 @@ import { SITE_TITLE } from '../consts';
 <html lang="ko">
 	<head>
 		<BaseHead title={`이력서 | ${SITE_TITLE}`} description="경력과 프로젝트" />
+		<style>
+			h2 {
+				margin-top: 1.5em;
+			}
+			h3 {
+				margin-top: 1.25em;
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
 			<h1>이력서</h1>
-			<p>이력서 내용을 준비 중입니다.</p>
+			<p>
+				<strong>양지훈</strong> (zhuny) ·
+				<a href="mailto:zhuny936772@gmail.com">zhuny936772@gmail.com</a>
+			</p>
+
+			<hr />
+
+			<h2>경력</h2>
+
+			<h3>씽크폴</h3>
+			<p><strong>2023.01 - 2026.03 (3년 3개월) / 정규직</strong></p>
+			<ul>
+				<li>
+					<strong>악플 Multi Label 분석 모델</strong><br />
+					악플을 다양한 종류로 나누고 태깅한 데이터를 토대로 학습하여 분류 모델을 개발하고 서비스에 적용
+				</li>
+				<li>
+					<strong>AI Chat bot</strong><br />
+					특정 인물을 학습한 AI와 채팅할 수 있는 챗봇 제작<br />
+					기술 스택: OpenAI, Python, Flutter
+				</li>
+				<li>
+					<strong>AI Holdem 복기 엔진</strong><br />
+					소셜 로그인 연동, FCM, 최종 앱 배포, 서비스 관리자 페이지 개발<br />
+					기술 스택: Flask, Flutter, Nuxt, Google Play, App Store
+				</li>
+				<li>
+					<strong>AI Generated Interview 서비스</strong><br />
+					연구 목적이나 동기를 입력하면 AI를 통해 자동으로 인터뷰 문항을 생성하는 서비스 개발<br />
+					기술 스택: OpenAI, FastAPI, React, STT, TTS, Socket
+				</li>
+			</ul>
+
+			<h3>액스</h3>
+			<p><strong>2020.02 - 2022.12 (2년 11개월) / 정규직</strong></p>
+			<ul>
+				<li>
+					<strong>여행사 용 여행 상품 관리 사이트</strong><br />
+					상품 입력 및 주문 관리를 한 곳에서 처리하는 서비스 개발<br />
+					기술 스택: Python, AWS, Flask
+				</li>
+				<li>
+					<strong>채널 데이터 동기 업무</strong><br />
+					여행 상품 채널 자동 업로드, 채널 구매 데이터 수집, 구매 확정 액션 동기화 구현<br />
+					기술 스택: AWS CDK, JavaScript, Python
+				</li>
+			</ul>
+
+			<h3>무브</h3>
+			<p><strong>2017.07 - 2019.12 (2년 6개월) / 정규직</strong></p>
+			<ul>
+				<li>
+					<strong>정시 모의지원 서비스</strong><br />
+					수능 점수와 선호 학과 데이터를 바탕으로 합격 예측 서비스 개발<br />
+					기술 스택: Python, Flask, Celery, Postgresql, Code Pipeline (AWS)
+				</li>
+				<li>
+					<strong>오르비</strong><br />
+					커뮤니티 사이트 개발 및 운영<br />
+					기술 스택: Python, Flask, Mysql, SQS, Lambda, AngularJS, React
+				</li>
+			</ul>
+
+			<h3>코스코이</h3>
+			<p><strong>2016.06 - 2017.06 (1년 1개월) / 정규직</strong></p>
+			<ul>
+				<li>
+					<strong>라즈베리파이 및 STT, TTS를 통한 음성 인식 토이 프로토타입 제작</strong><br />
+					라즈베리파이에 마이크·스피커를 연결해 특정 단어에 반응하는 음성 인식 토이 제작
+				</li>
+			</ul>
+
+			<h3>국가수리과학연구소</h3>
+			<p><strong>2014.01 - 2014.02 (2개월) / 인턴</strong></p>
+			<ul>
+				<li>
+					<strong>감정 분석을 위한 신문 데이터 Scrap 및 MongoDB 기반 DB 구축</strong><br />
+					인터넷 신문 기사 자동 수집, Tokenizer 기반 Word Bag 구축, 단어 간 유사도 계산
+				</li>
+			</ul>
+
+			<hr />
+
+			<h2>학력</h2>
+			<ul>
+				<li>
+					<strong>카이스트</strong><br />
+					2010.02 ~ 2015.08, 졸업<br />
+					수리과학과 / 전산학과 복수전공
+				</li>
+			</ul>
 		</main>
 		<Footer />
 	</body>
