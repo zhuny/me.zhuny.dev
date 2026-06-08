@@ -3,11 +3,24 @@
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://me.zhuny.dev',
-	integrations: [mdx(), sitemap()],
+	integrations: [
+		mdx({
+			components: {
+				MediaLink: './src/components/MediaLink.astro',
+			},
+		}),
+		sitemap(),
+	],
+	markdown: {
+		remarkPlugins: [remarkMath],
+		rehypePlugins: [rehypeKatex],
+	},
 	fonts: [
 		{
 			provider: fontProviders.local(),
