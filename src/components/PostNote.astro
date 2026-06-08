@@ -1,0 +1,21 @@
+<div class="post-note">
+	<slot />
+</div>
+
+<style>
+	.post-note {
+		margin: 0 0 2em;
+		font-size: 0.88em;
+		color: rgb(var(--gray));
+		line-height: 1.6;
+		text-align: center;
+	}
+
+	.post-note :global(p) {
+		margin: 0 0 0.4em;
+	}
+
+	.post-note :global(p:last-child) {
+		margin-bottom: 0;
+	}
+</style>
