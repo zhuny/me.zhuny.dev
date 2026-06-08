@@ -5,10 +5,17 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import MediaLink from '../components/MediaLink.astro';
+import { getYoutubeThumbnail } from '../utils/youtube';
+import 'katex/dist/katex.min.css';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, youtube } = Astro.props;
+console.log(youtube);
+const youtubeThumbnail = youtube
+	? (youtube.thumbnail ?? getYoutubeThumbnail(youtube.url))
+	: null;
 ---
 
 <html lang="ko">
@@ -52,6 +59,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.last-updated-on {
 				font-style: italic;
 			}
+			.inspiration {
+				margin-top: 2.5em;
+				padding-top: 1.5em;
+				border-top: 1px solid rgb(var(--gray-light));
+			}
+			.inspiration-label {
+				margin: 0 0 1em;
+				font-size: 0.92em;
+				color: rgb(var(--gray));
+			}
 		</style>
 	</head>
 
@@ -78,6 +95,19 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						<hr />
 					</div>
 					<slot />
+					{
+						youtube && youtubeThumbnail && (
+							<section class="inspiration">
+								<p class="inspiration-label">이 글은 아래 영상에서 영감을 받아 작성했습니다.</p>
+								<MediaLink
+									href={youtube.url}
+									image={youtubeThumbnail}
+									title={youtube.title}
+									subtitle={youtube.subtitle}
+								/>
+							</section>
+						)
+					}
 				</div>
 			</article>
 		</main>

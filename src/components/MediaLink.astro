@@ -1,0 +1,117 @@
+---
+interface Props {
+	href: string;
+	image: string;
+	title: string;
+	subtitle?: string;
+}
+
+const { href, image, title, subtitle } = Astro.props;
+---
+
+<a class="media-link" href={href} target="_blank" rel="noopener noreferrer">
+	<img class="media-link__image" src={image} alt="" loading="lazy" decoding="async" />
+	<span class="media-link__content">
+		<span class="media-link__title">{title}</span>
+		{subtitle && <span class="media-link__subtitle">{subtitle}</span>}
+	</span>
+	<span class="media-link__arrow" aria-hidden="true">→</span>
+</a>
+
+<style>
+	.media-link {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 0.85em 1.15em 0.85em 0.85em;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 12px;
+		background: linear-gradient(
+			145deg,
+			rgba(var(--gray-light), 0.85),
+			rgba(20, 24, 33, 0.95)
+		);
+		box-shadow: var(--box-shadow);
+		color: rgb(var(--black));
+		text-decoration: none;
+		transition:
+			transform 0.2s ease,
+			border-color 0.2s ease,
+			box-shadow 0.2s ease,
+			background 0.2s ease;
+	}
+
+	.media-link:hover {
+		transform: translateY(-3px);
+		border-color: var(--accent);
+		box-shadow:
+			0 4px 12px rgba(107, 138, 255, 25%),
+			0 12px 28px rgba(0, 0, 0, 55%);
+		background: linear-gradient(
+			145deg,
+			rgba(107, 138, 255, 12%),
+			rgba(20, 24, 33, 0.98)
+		);
+	}
+
+	.media-link:active {
+		transform: translateY(-1px);
+	}
+
+	.media-link:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 3px;
+	}
+
+	.media-link__image {
+		flex-shrink: 0;
+		width: 7.5rem;
+		height: 4.25rem;
+		object-fit: cover;
+		border-radius: 8px;
+		background: rgb(var(--gray-light));
+	}
+
+	.media-link__content {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2em;
+		min-width: 0;
+		flex: 1;
+	}
+
+	.media-link__title {
+		font-size: 1.05em;
+		font-weight: 700;
+		line-height: 1.35;
+	}
+
+	.media-link__subtitle {
+		font-size: 0.88em;
+		font-weight: 400;
+		color: rgb(var(--gray));
+		line-height: 1.4;
+	}
+
+	.media-link__arrow {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.25em;
+		height: 2.25em;
+		border-radius: 50%;
+		background: rgba(var(--gray-light), 0.6);
+		color: var(--accent);
+		font-size: 1.25em;
+		line-height: 1;
+		transition:
+			background 0.2s ease,
+			transform 0.2s ease;
+	}
+
+	.media-link:hover .media-link__arrow {
+		background: rgba(107, 138, 255, 20%);
+		transform: translateX(4px);
+	}
+</style>
