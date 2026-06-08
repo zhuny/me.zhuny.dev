@@ -11,6 +11,7 @@ import SocialLinks from './SocialLinks.astro';
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 			<HeaderLink href="/resume">Resume</HeaderLink>
+			<HeaderLink href="/about">About</HeaderLink>
 		</div>
 		<SocialLinks />
 	</nav>
@@ -35,6 +36,7 @@ import SocialLinks from './SocialLinks.astro';
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		min-height: 4em;
 	}
 	nav a {
 		padding: 1em 0.5em;
@@ -48,7 +50,7 @@ import SocialLinks from './SocialLinks.astro';
 	}
 
 	@media (max-width: 720px) {
-		header :global(.social-links) {
+		.internal-links {
 			display: none;
 		}
 	}

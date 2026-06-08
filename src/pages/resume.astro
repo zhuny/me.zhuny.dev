@@ -2,7 +2,12 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_TITLE } from '../consts';
+import { SITE_GITHUB, SITE_TITLE } from '../consts';
+
+const resumeLinks = [
+	{ href: 'https://me.zhuny.dev/', label: '사이트' },
+	{ href: SITE_GITHUB, label: '깃헙' },
+];
 ---
 
 <!doctype html>
@@ -120,6 +125,20 @@ import { SITE_TITLE } from '../consts';
 					2010.02 ~ 2015.08, 졸업<br />
 					수리과학과 / 전산학과 복수전공
 				</li>
+			</ul>
+
+			<h2>링크</h2>
+			<ul>
+				{
+					resumeLinks.map((link) => (
+						<li>
+							{link.label} :
+							<a href={link.href} target="_blank" rel="noopener noreferrer">
+								 {link.href}
+							</a>
+						</li>
+					))
+				}
 			</ul>
 		</main>
 		<Footer />
