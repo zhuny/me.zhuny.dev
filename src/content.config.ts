@@ -11,7 +11,11 @@ const youtube = z.object({
 
 const blog = defineCollection({
 	// Load Markdown and MDX files in the `src/content/blog/` directory.
-	loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+	// README.md is a contributor guide, not a published post.
+	loader: glob({
+		base: './src/content/blog',
+		pattern: ['**/*.{md,mdx}', '!README.md'],
+	}),
 	// Type-check frontmatter using a schema
 	schema: ({ image }) =>
 		z.object({
