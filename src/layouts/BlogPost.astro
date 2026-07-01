@@ -6,12 +6,17 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import MediaLink from '../components/MediaLink.astro';
+import ShareShortcut from '../components/ShareShortcut.astro';
+import { getShortcutUrl } from '../utils/shortcuts';
 import { getYoutubeThumbnail } from '../utils/youtube';
 import 'katex/dist/katex.min.css';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & {
+	slug: string;
+};
 
-const { title, description, pubDate, updatedDate, heroImage, youtube } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, youtube, slug } = Astro.props;
+const shortcutUrl = getShortcutUrl(slug, Astro.site?.href);
 const youtubeThumbnail = youtube
 	? (youtube.thumbnail ?? getYoutubeThumbnail(youtube.url))
 	: null;
@@ -43,6 +48,7 @@ const youtubeThumbnail = youtube
 				color: rgb(var(--gray-dark));
 			}
 			.title {
+				position: relative;
 				margin-bottom: 1em;
 				padding: 1em 0;
 				text-align: center;
@@ -68,6 +74,32 @@ const youtubeThumbnail = youtube
 				font-size: 0.92em;
 				color: rgb(var(--gray));
 			}
+			.share {
+				position: absolute;
+				top: 1em;
+				right: 0;
+				display: flex;
+				align-items: center;
+			}
+			.back-to-list {
+				position: absolute;
+				top: 1em;
+				left: 0;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 0.4em;
+				border-radius: 8px;
+				color: rgb(var(--gray));
+				text-decoration: none;
+				transition:
+					color 0.15s,
+					background 0.15s;
+			}
+			.back-to-list:hover {
+				color: rgb(var(--gray-dark));
+				background: rgba(var(--gray-light), 0.35);
+			}
 		</style>
 	</head>
 
@@ -80,6 +112,19 @@ const youtubeThumbnail = youtube
 				</div>
 				<div class="prose">
 					<div class="title">
+						<a href="/blog" class="back-to-list" aria-label="블로그 목록" title="블로그 목록">
+							<svg viewBox="0 0 16 16" aria-hidden="true" width="18" height="18">
+								<path
+									fill="currentColor"
+									d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5Zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5Zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5Z"
+								></path>
+							</svg>
+						</a>
+						{shortcutUrl && (
+							<div class="share">
+								<ShareShortcut url={shortcutUrl} />
+							</div>
+						)}
 						<div class="date">
 							<FormattedDate date={pubDate} />
 							{

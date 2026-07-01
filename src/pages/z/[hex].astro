@@ -1,0 +1,13 @@
+---
+import { shortcuts } from '../../data/shortcuts';
+
+export function getStaticPaths() {
+	return Object.entries(shortcuts).map(([hex, slug]) => ({
+		params: { hex },
+		props: { slug },
+	}));
+}
+
+const { slug } = Astro.props;
+return Astro.redirect(`/blog/${slug}`);
+---
