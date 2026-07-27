@@ -12,8 +12,8 @@ export function getHexBySlug(slug: string): string | undefined {
 	return slugToHex[slug];
 }
 
-export function getShortcutUrl(slug: string, site = 'https://me.zhuny.dev'): string | null {
+export function getShortcutUrl(slug: string): string | null {
 	const hex = getHexBySlug(slug);
 	if (!hex) return null;
-	return new URL(`/z/${hex}`, site).href;
+	return `/z/${hex}`;
 }

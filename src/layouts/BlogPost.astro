@@ -16,7 +16,7 @@ type Props = CollectionEntry<'blog'>['data'] & {
 };
 
 const { title, description, pubDate, updatedDate, heroImage, youtube, slug } = Astro.props;
-const shortcutUrl = getShortcutUrl(slug, Astro.site?.href);
+const shortcutUrl = getShortcutUrl(slug);
 const youtubeThumbnail = youtube
 	? (youtube.thumbnail ?? getYoutubeThumbnail(youtube.url))
 	: null;

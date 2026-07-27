@@ -14,4 +14,4 @@
 
 - hex는 8자리 임의 문자열 (기존 항목과 겹치지 않게)
 - slug는 파일 경로에서 `src/content/blog/`와 확장자를 뺀 값
-- 숏링크: `https://me.zhuny.dev/z/{hex}` → `/blog/{slug}`로 리다이렉트
+- 숏링크: `/z/{hex}` → `/blog/{slug}`로 리다이렉트

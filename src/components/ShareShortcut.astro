@@ -73,9 +73,10 @@ const { url } = Astro.props;
 
 	document.querySelectorAll<HTMLButtonElement>('.share-shortcut').forEach((button) => {
 		button.addEventListener('click', async () => {
-			const url = button.dataset.url;
-			if (!url) return;
+			const path = button.dataset.url;
+			if (!path) return;
 
+			const url = new URL(path, window.location.origin).href;
 			const copied = await copyToClipboard(url);
 
 			if (!copied) {
