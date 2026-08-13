@@ -1,0 +1,12 @@
+# Numerical computation
+numpy>=2.0
+scipy>=1.14
+
+# Data modeling
+pydantic>=2.8
+
+# Time series
+pandas>=2.2
+
+# Solar position / irradiance / PV modeling
+pvlib>=0.13
