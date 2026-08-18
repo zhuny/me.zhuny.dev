@@ -5,6 +5,9 @@ scipy>=1.14
 # Data modeling
 pydantic>=2.8
 
+# Plotting
+matplotlib>=3.9
+
 # Time series
 pandas>=2.2
 
