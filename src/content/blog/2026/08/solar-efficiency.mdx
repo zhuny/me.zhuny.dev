@@ -31,10 +31,10 @@ pubDate: 'Aug 18 2026'
 여기서 필요한 기본 변수는 다음과 같다.
 
 ```python
-# 지구의 자전축 기울기
-# 현재의 위도
-# 공전 1회당 자전 횟수
-# 태양광판
+axial_tilt = np.deg2rad(23.44)  # 지구의 자전축 기울기
+latitude = np.deg2rad(35.639)  # 현재의 위도
+n_spin = 365 + 1  # 공전 1회당 자전 횟수
+panel_angle = np.linspace(-np.pi / 2, np.pi / 2)  # 태양광판
 ```
 
 공전 주기는 $2\pi$로 고정하자. 그러면 $\cos(2\pi t / T)$와 같이 시간에 상수를 매번 곱하지 않고 $\cos t$처럼 간단히 표현할 수 있다.
@@ -44,19 +44,23 @@ $t=0$일 때에는 자전축이 태양 쪽으로 기울어 있고(하지), 그 �
 먼저 $t = 0$일 때를 생각하자.
 
 ```python
-# 지구의 자전축
-# 태양광의 normal vector
-# 지구 기준 태양 위치
-# 태양광 발전량
+earth_rot_axis = euler(0, axial_tilt)  # 지구의 자전축
+panel_normal = _rotate(
+    euler(np.pi / 2, np.pi / 2),
+    euler(0, np.pi / 2 + axial_tilt - latitude),
+    panel_angle,
+)  # 태양광의 normal vector
+solar_pos = euler(0, np.pi / 2)  # 지구 기준 태양 위치
+power = max(panel_normal @ solar_pos, 0)  # 태양광 발전량
 ```
 
 이제 일반적인 $t$에서 식을 작성해 보자.
 
 ```python
-# 지구의 자전축
-# 태양광의 normal vector
-# 지구 기준 태양 위치
-# 태양광 발전량
+earth_rot_axis = euler(0, axial_tilt)  # 지구의 자전축
+panel_normal_t = _rotate(earth_rot_axis, panel_normal, t * n_spin)  # 태양광의 normal vector
+solar_pos_t = _rotate(euler(0, 0), solar_pos, t)  # 지구 기준 태양 위치
+power_t = max(panel_normal_t @ solar_pos_t, 0)  # 태양광 발전량
 ```
 
 태양광판 각도가 $-\pi/2$에서 $\pi/2$까지 변할 때 그래프는 다음과 같다.
