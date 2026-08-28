@@ -1,5 +1,8 @@
 /** hex → 블로그 slug (content collection id) */
 export const shortcuts: Record<string, string> = {
+	"1f8c4a2e": '2026/08/bems-qubo-quantum-optimization',
+	"5a9d3b70": '2026/08/langfuse-dashboard',
+	"0c6e2f91": '2026/08/nmecr',
 	"b8e1a4f6": '2026/08/solar-efficiency',
 	"e4b7c2a9": '2026/07/name-email-collision',
 	"d2a8f3c1": '2026/07/endfield-factory-optimization',
