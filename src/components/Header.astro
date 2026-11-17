@@ -24,12 +24,17 @@ import SocialLinks from './SocialLinks.astro';
 	}
 	h2 {
 		margin: 0;
-		font-size: 1em;
+		font-family: var(--font-allura), cursive;
+		font-size: 2.35rem;
+		font-weight: 400;
+		line-height: 1;
 	}
 
 	h2 a,
 	h2 a.active {
 		text-decoration: none;
+		padding-top: 0.45em;
+		padding-bottom: 0.35em;
 	}
 	nav {
 		display: flex;
@@ -46,6 +51,10 @@ import SocialLinks from './SocialLinks.astro';
 	nav a.active {
 		text-decoration: none;
 		border-bottom-color: var(--accent);
+	}
+	nav h2 a {
+		padding: 0.35em 0.5em 0.2em;
+		color: rgb(var(--black));
 	}
 
 	@media (max-width: 720px) {
