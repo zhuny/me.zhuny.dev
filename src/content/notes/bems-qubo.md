@@ -1,13 +1,10 @@
----
-title: 'QUBO 기반 BEMS 비용 최적화 및 양자 최적화 검토'
-description: ''
-pubDate: 'Aug 28 2026'
----
-import PostNote from '../../../../components/PostNote.astro';
+# QUBO 기반 BEMS 비용 최적화 및 양자 최적화 검토
 
-<PostNote>
-ChatGPT와의 대화를 바탕으로 생성된 내용입니다.
-</PostNote>
+공부 노트. 사이트에 올리지 않는다. 글이 되면 `src/content/blog/`로 옮긴다.
+
+초고를 적던 날: 2026-08-28
+
+> ChatGPT와의 대화를 바탕으로 생성된 내용입니다.
 
 ## 1. 연구 목적
 
@@ -15,9 +12,7 @@ BEMS(Building Energy Management System)의 운영 비용 최적화 문제를 QUB
 
 전체 과정은 다음과 같다.
 
-<PostNote>
-BEMS 운영 문제 → 목적함수 → QUBO → Ising Hamiltonian → QAOA
-</PostNote>
+> BEMS 운영 문제 → 목적함수 → QUBO → Ising Hamiltonian → QAOA
 
 ---
 
@@ -295,9 +290,7 @@ $$
 
 QAOA에서 일어나는 과정을 요약하면 다음과 같다.
 
-<PostNote>
-균등한 확률분포 → Cost → 비용에 따른 Phase 차이 → Mixer → Interference → 측정 확률 차이
-</PostNote>
+> 균등한 확률분포 → Cost → 비용에 따른 Phase 차이 → Mixer → Interference → 측정 확률 차이
 
 Cost Hamiltonian은 **좋은 해와 나쁜 해를 구분하는 phase 정보를 만들고**, Mixer Hamiltonian은 **서로 다른 해의 amplitude를 섞어 그 phase 차이가 측정 확률에 영향을 주게 만든다.**
 
@@ -314,9 +307,7 @@ $$
 
 \(\gamma\)와 \(\beta\)는 각각 Cost와 Mixer를 얼마나 적용할지 정하는 parameter다. Classical Optimizer가 이 값을 조정하면서, 좋은 해가 높은 확률로 측정되는 상태를 찾는다. 곧 QAOA는 아래를 반복하며 확률분포를 최적화하는 Hybrid Quantum-Classical Algorithm이다.
 
-<PostNote>
-Cost로 평가 ↔ Mixer로 탐색
-</PostNote>
+> Cost로 평가 ↔ Mixer로 탐색
 
 ### 5.4 BEMS에서의 해석
 
@@ -333,11 +324,9 @@ $$
 
 처럼 한 bit만 바뀐 다른 스케줄과 연결한다. 따라서 다음과 같이 해석할 수 있다.
 
-<PostNote>
-Cost Hamiltonian: 어떤 운전 스케줄이 좋은가?
-
-Mixer Hamiltonian: 어떤 운전 스케줄을 탐색할 것인가?
-</PostNote>
+> Cost Hamiltonian: 어떤 운전 스케줄이 좋은가?
+>
+> Mixer Hamiltonian: 어떤 운전 스케줄을 탐색할 것인가?
 
 실제 BEMS에는 동시에 돌릴 수 있는 장비 수, 최소 운전시간, 충·방전 상태 같은 제약이 있다. 기본 X-Mixer는 이런 제약을 무시하고 모든 binary state를 탐색하므로, 유효한 스케줄 사이에서만 전이되도록 **Constraint-preserving Mixer나 Custom Mixer를 설계하는 일**도 중요한 연구 주제가 될 수 있다.
 
@@ -349,9 +338,7 @@ Mixer Hamiltonian: 어떤 운전 스케줄을 탐색할 것인가?
 
 전체 문제 구조는 다음과 같다.
 
-<PostNote>
-운영 정책 → 비용·제약 정의 → QUBO → Ising Hamiltonian → QAOA → 최적 운전 스케줄
-</PostNote>
+> 운영 정책 → 비용·제약 정의 → QUBO → Ising Hamiltonian → QAOA → 최적 운전 스케줄
 
 여기서 QUBO 자체는 양자 알고리즘이 아니라 **최적화 문제를 binary quadratic form으로 나타내는 중간 표현**이다.
 

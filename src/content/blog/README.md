@@ -28,6 +28,7 @@ slug 형식은 `YYYY/MM/{filename-without-ext}`이고, content collection id와 
 | hex | 기존과 겹치지 않는 8자리 |
 
 `heroImage`, `updatedDate`, `youtube`는 사용자가 주거나 파일이 이미 있을 때만 넣는다.
+`draft: true`이면 목록, 글 페이지, RSS, 숏링크에 나오지 않는다. 공개할 때 이 줄을 지운다.
 
 템플릿:
 
@@ -57,6 +58,12 @@ pubDate: 'Jan 1 2026'
 | 이름 기반 이메일 생성 | `name-email-collision.mdx` |
 | 붕어섬의 친환경 비늘 | `solar-efficiency.mdx` |
 | ChatGPT야 십자수 용 도트 그래픽 그려줘 | `chatgpt-cross-stitch.mdx` |
+
+## 공부 노트
+
+공개하지 않을 메모는 `src/content/notes/{slug}.md`에 둔다.
+이 폴더는 content collection이 아니라서 목록, 글 페이지, RSS에 나오지 않는다.
+글이 되면 `src/content/blog/YYYY/MM/{slug}.mdx`로 옮기고, frontmatter와 shortcut을 채운다.
 
 ## shortcuts
 
