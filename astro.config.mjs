@@ -24,6 +24,14 @@ export default defineConfig({
 	},
 	fonts: [
 		{
+			provider: fontProviders.google(),
+			name: 'Allura',
+			cssVariable: '--font-allura',
+			weights: [400],
+			styles: ['normal'],
+			fallbacks: ['cursive'],
+		},
+		{
 			provider: fontProviders.local(),
 			name: 'Atkinson',
 			cssVariable: '--font-atkinson',

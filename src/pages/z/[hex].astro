@@ -1,11 +1,15 @@
 ---
 import { shortcuts } from '../../data/shortcuts';
+import { getPublishedPosts } from '../../utils/posts';
 
-export function getStaticPaths() {
-	return Object.entries(shortcuts).map(([hex, slug]) => ({
-		params: { hex },
-		props: { slug },
-	}));
+export async function getStaticPaths() {
+	const published = new Set((await getPublishedPosts()).map((post) => post.id));
+	return Object.entries(shortcuts)
+		.filter(([, slug]) => published.has(slug))
+		.map(([hex, slug]) => ({
+			params: { hex },
+			props: { slug },
+		}));
 }
 
 const { slug } = Astro.props;
